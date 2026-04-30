@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Queue Pricing — Oddle</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #1a1a1a;
+      background: #fff;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+    header { margin-bottom: 48px; }
+    header h1 { font-size: 26px; font-weight: 700; margin-bottom: 6px; }
+    header p { color: #666; font-size: 14px; }
+    h2 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #888;
+      margin: 48px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #eee;
+    }
+    h3 { font-size: 16px; font-weight: 600; margin: 24px 0 8px; }
+    p { margin-bottom: 12px; }
+    ul { padding-left: 20px; margin-bottom: 12px; }
+    ul li { margin-bottom: 6px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+      font-size: 14px;
+    }
+    th {
+      text-align: left;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #888;
+      padding: 8px 12px;
+      border-bottom: 2px solid #eee;
+    }
+    td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #f0f0f0;
+      vertical-align: top;
+    }
+    tr:last-child td { border-bottom: none; }
+    .check { color: #27ae60; font-weight: 600; }
+    .cross { color: #c0392b; font-weight: 600; }
+    .tbd { color: #e67e22; font-style: italic; }
+    .note {
+      font-size: 13px;
+      color: #888;
+      font-style: italic;
+      margin-top: 8px;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-right: 6px;
+    }
+    .tag-sg { background: #e8f4fd; color: #1a6fa8; }
+    .tag-tw { background: #fdecea; color: #c0392b; }
+    .callout {
+      background: #f8f8f8;
+      border-left: 3px solid #ddd;
+      padding: 14px 18px;
+      margin: 16px 0;
+      border-radius: 0 6px 6px 0;
+      font-size: 14px;
+    }
+    .callout.warning {
+      background: #fff8f0;
+      border-left-color: #e67e22;
+    }
+    a { color: #1a6fa8; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .discussion-section {
+      background: #f5f0ff;
+      border: 1px solid #c9b8f0;
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin: 48px 0 24px;
+    }
+    .discussion-section h2 {
+      margin-top: 0;
+      color: #5b3fbf;
+      border-bottom-color: #c9b8f0;
+    }
+    .discussion-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #fff;
+      background: #5b3fbf;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Queue Pricing</h1>
+    <p>Internal reference — pricing breakdown and open items for Queue launch &nbsp;·&nbsp; April 2026</p>
+  </header>
+
+  <!-- PLAN OVERVIEW -->
+  <h2>All Access Plan — What Merchants Pay</h2>
+  <p>Queue is bundled into the All Access plan. There is no standalone Queue SKU.</p>
+  <table>
+    <tr><th></th><th><span class="tag tag-sg">Singapore</span></th><th><span class="tag tag-tw">Taiwan</span></th></tr>
+    <tr><td>Monthly fee</td><td>SGD$215/mo</td><td>NT$2,088/mo</td></tr>
+    <tr><td>Annual option</td><td>2 months free</td><td>2 months free</td></tr>
+    <tr><td>Queue + Reservation entries</td><td>750/mo (shared)</td><td>700/mo (shared)</td></tr>
+    <tr><td>Online order cap</td><td>SGD$3,000/mo</td><td>NT$25,000/mo</td></tr>
+    <tr><td>Customer enrollments</td><td>700/mo</td><td>300/mo</td></tr>
+    <tr><td>In-person voucher redemptions</td><td>200/mo</td><td>100/mo</td></tr>
+    <tr><td>Marketing credits</td><td>5,000/mo</td><td>5,000/mo</td></tr>
+    <tr><td>Customer profiles</td><td>Unlimited</td><td>Unlimited</td></tr>
+  </table>
+  <p class="note">Queue and Reserve entries share the same monthly limit. A merchant using both products draws from the same pool.</p>
+
+  <!-- NOTIFICATION MODEL -->
+  <div class="discussion-section">
+    <h2>Notification Model — The Pricing Challenge <span class="discussion-badge">For Discussion</span></h2>
+    <p>Reserve and Queue follow different notification models, which creates a pricing decision for Queue:</p>
+    <table>
+      <tr><th></th><th>Reserve</th><th>Queue</th></tr>
+      <tr><td>Primary notification channel</td><td>Email</td><td>WhatsApp (SG) / LINE (TW)</td></tr>
+      <tr><td>Cost to Oddle</td><td>Near zero</td><td>Per-message charge (Bird / Crescendo)</td></tr>
+      <tr><td>Optional?</td><td>SMS and calling are optional add-ons</td><td>WhatsApp/LINE are mandatory — without them customers cannot be notified</td></tr>
+      <tr><td>Included in plan?</td><td>Email: yes. SMS/calling: no</td><td>Should mirror email — must be included</td></tr>
+    </table>
+    <div class="callout warning">
+      <strong>Decision required before launch</strong>
+      WhatsApp (SG) and LINE (TW) are not optional enhancements — they are the only way Queue communicates with customers. They are compulsory in the same way email is compulsory for Reserve. Whether to absorb cost into the plan or charge separately needs to be confirmed and aligned with Finance / BD.
+    </div>
+  </div>
+
+  <!-- CURRENT COST STATE -->
+  <h2>Current Cost Status</h2>
+
+  <h3><span class="tag tag-sg">Singapore</span> WhatsApp Cost Estimate</h3>
+  <p>Rate: SGD$0.024/message · Average messages per queue entry: 2.5 · Cost per entry: <strong>SGD$0.06</strong></p>
+  <table>
+    <tr><th>Entries/month</th><th>WhatsApp cost/month</th><th>As % of SGD$215 plan</th></tr>
+    <tr><td>100</td><td>SGD$6.00</td><td>2.8%</td></tr>
+    <tr><td>300</td><td>SGD$18.00</td><td>8.4%</td></tr>
+    <tr><td>500</td><td>SGD$30.00</td><td>14.0%</td></tr>
+    <tr><td>750 (cap)</td><td>SGD$45.00</td><td>20.9%</td></tr>
+  </table>
+
+  <h3><span class="tag tag-tw">Taiwan</span> LINE Cost Estimate</h3>
+  <p>Rate: NT$0.4/message (LON — assuming all LON) · Average messages per queue entry: 2.5 · Cost per entry: <strong>NT$1.00</strong></p>
+  <table>
+    <tr><th>Entries/month</th><th>LINE cost/month</th><th>As % of NT$2,088 plan</th></tr>
+    <tr><td>100</td><td>NT$100</td><td>4.8%</td></tr>
+    <tr><td>300</td><td>NT$300</td><td>14.4%</td></tr>
+    <tr><td>500</td><td>NT$500</td><td>23.9%</td></tr>
+    <tr><td>700 (cap)</td><td>NT$700</td><td>33.5%</td></tr>
+  </table>
+  <!-- OVERAGE -->
+  <h2>Overage Model</h2>
+  <p>Queue and Reserve share the same entry pool. Overage applies when combined Queue + Reserve entries exceed the monthly cap. Queue uses the same per-entry overage rate as Reserve.</p>
+  <table>
+    <tr><th></th><th><span class="tag tag-sg">Singapore</span></th><th><span class="tag tag-tw">Taiwan</span></th></tr>
+    <tr><td>Monthly cap (Queue + Reserve shared)</td><td>750 entries</td><td>700 entries</td></tr>
+    <tr><td>Overage rate</td><td>SGD$0.30/entry</td><td>NT$3/entry</td></tr>
+    <tr><td>Notification cost at overage</td><td>SGD$0.06 (WhatsApp)</td><td>NT$1.00 (LINE)</td></tr>
+    <tr><td>Oddle margin per overage entry</td><td>SGD$0.24</td><td>NT$2.00</td></tr>
+  </table>
+  <p class="note">Overage rate is the same as Reserve — Queue notification cost (WhatsApp/LINE) is absorbed by Oddle within the overage margin. Bird calling is usage-based and charged separately regardless of cap status.</p>
+
+  <!-- DECISIONS -->
+  <h2>Decisions Required Before Launch</h2>
+  <table>
+    <tr><th>Decision</th><th>Options / Context</th></tr>
+    <tr>
+      <td>WhatsApp &amp; LINE notification cost — absorbed or usage-based?</td>
+      <td>WhatsApp/LINE are mandatory for Queue (no email alternative). Absorbing mirrors how email is treated for Reserve. At cap: SGD$45/mo (SG), NT$700/mo (TW).</td>
+    </tr>
+    <tr>
+      <td>Entry cap — shared pool with Reserve, or separate Queue cap?</td>
+      <td>Shared pool keeps it simple (750 SG / 700 TW combined). Separate cap avoids penalising merchants who use both products but increases cost exposure.</td>
+    </tr>
+    <tr>
+      <td>Overage rate — same as Reserve, or Queue-specific?</td>
+      <td>Reserve rate: SGD$0.30/entry (SG), NT$3/entry (TW). Using the same rate is simple, but margin is lower than Reserve — Queue incurs notification cost per entry (SGD$0.06 WhatsApp / NT$1.00 LINE) that Reserve does not. A Queue-specific rate could preserve comparable margin.</td>
+    </tr>
+    <tr>
+      <td>Bird calling rate</td>
+      <td>Usage-based, charged separately to merchants. Rate not yet confirmed.</td>
+    </tr>
+  </table>
+
+</body>
+</html>
