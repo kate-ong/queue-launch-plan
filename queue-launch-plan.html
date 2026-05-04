@@ -185,7 +185,7 @@
     <a href="#what-were-launching">What We're Launching</a>
     <a href="#merchant-value-prop">Merchant Value Prop</a>
     <a href="#markets">Markets</a>
-    <a href="#how-we-find-them">How We Find Them</a>
+    <a href="#how-we-find-them">Target Customers</a>
     <a href="#timeline">Timeline</a>
     <a href="#success-metrics">Success Metrics</a>
     <a href="#open-items">Open Items</a>
@@ -221,7 +221,7 @@
   <ul>
     <li><strong>Capture demand you're currently losing</strong> — customers who see a long physical queue and walk away now join digitally instead. Queue recovers that lost revenue.</li>
     <li><strong>Better customer experience, less attrition</strong> — customers are freed from standing in line. They scan, walk around the mall, and return when notified. Fewer walk-aways, less frustration.</li>
-    <li><strong>Every walk-in becomes a known customer</strong> — Oddle Pass login is mandatory to join the queue, so every queue entry creates a verified customer profile in CDP. Walk-in diners are no longer anonymous.</li>
+    <li><strong>Every queue entry captures a verified customer</strong> — Oddle Pass login is mandatory to join the queue, so each queue entry creates a customer profile in CDP. Captures the person who joins (one per group) — previously this data didn't exist at all for walk-in traffic.</li>
     <li><strong>Better value with All Access</strong> — Queue is included in the All Access plan, which also covers ordering, reservations, and loyalty. For existing merchants, activation requires no new contract. For new merchants, All Access is a compelling entry point vs. competitors who charge for queue management alone.</li>
   </ul>
   <h3><span class="phase-label next">Phase 2</span> Virtual Queue (Next Phase)</h3>
@@ -268,10 +268,23 @@
   <p class="note">Pricing for Queue is to be further discussed — see <a href="queue-pricing.html">pricing page</a> for current breakdown and open items.</p>
 
   <!-- HOW WE FIND THEM -->
-  <h2 id="how-we-find-them">How We Find Them</h2>
-  <p>Pilot merchants will be hand-selected by the front office team — goal is to validate the feature and surface major issues, not maximise coverage. The scoring models below are for scaling sales and upsell outreach post-pilot.</p>
+  <h2 id="how-we-find-them">Target Customers</h2>
+
+  <h3>ICP 1 — High-volume mall casual dining chain <span style="font-weight:400; color:#888; font-size:13px;">· Phase 1 · SG &amp; TW</span></h3>
+  <p>The only active ICP for Phase 1. SG pilot begins 18 May. TW targeting begins once LINE and local calling are production-ready.</p>
+  <table>
+    <tr><th>Dimension</th><th>Detail</th></tr>
+    <tr><td>Firmographic</td><td>Multi-outlet chain (3+ locations), Tier 1–2 malls, cuisine: hot pot / BBQ / Korean / Chinese (e.g. Din Tai Fung, Xiang Xiang Hunan)</td></tr>
+    <tr><td>Technographic</td><td>Managing walk-ins manually (paper, tokens) or on a competitor (Inline)</td></tr>
+    <tr><td>Behavioral signals</td><td>Google review count 500+, rating 4.0+, reviews mention queuing, clear Popular Times peaks</td></tr>
+    <tr><td>Situational trigger</td><td>Opening new mall outlet, losing staff, or complaining about Inline pricing</td></tr>
+    <tr><td>Strategic goal</td><td>Recover walk-away revenue at peak, reduce FOH staff workload</td></tr>
+    <tr><td>Decision-maker</td><td>Owner or ops manager</td></tr>
+    <tr><td>Sales motion</td><td>Existing Oddle merchants: activate (no new contract). Net new: full outbound sell.</td></tr>
+  </table>
 
   <h3>Pilot Merchant Profile</h3>
+  <p>Pilot merchants will be hand-selected by the front office — goal is to validate the feature end-to-end, not maximise ICP fit.</p>
   <ul>
     <li>Genuine peak-hour queue pressure in a mall — hot pot, BBQ, popular casual dining</li>
     <li>Existing CS relationship — responsive owner/manager for quick feedback</li>
@@ -280,12 +293,12 @@
     <li>Include at least one net new merchant — to validate the full onboarding flow, not just activation</li>
   </ul>
 
-  <h3><span class="tag tag-sg">Singapore</span> Merchant Scoring Model (Post-Pilot)</h3>
+  <h3>SG Merchant Scoring Model (Post-Pilot)</h3>
   <p>Merchants are scored across the following signals. Higher score = higher outreach priority. Weights to be determined by Rev Ops.</p>
   <table>
     <tr><th>Signal</th><th>Notes</th></tr>
     <tr><td>Mall tier</td><td>Tier 1 = highest score (see below)</td></tr>
-    <tr><td>Existing Oddle merchant</td><td>Prioritised for initial pilot (easier activation — Queue already included in their plan), but not a filter. New merchants are also in scope.</td></tr>
+    <tr><td>Existing Oddle merchant</td><td>Easier activation — Queue already included in their plan. Not a filter; new merchants also in scope.</td></tr>
     <tr><td>Google review count</td><td>Higher = stronger foot traffic signal</td></tr>
     <tr><td>Google rating</td><td>4.0+ scores positively</td></tr>
     <tr><td>Popular times peaks</td><td>Clear lunch/dinner rush on Google Maps</td></tr>
@@ -313,9 +326,19 @@
     </tr>
   </table>
 
-  <h3><span class="tag tag-tw">Taiwan</span> ICP</h3>
-  <p>TW ICP is being refined with Duncan Tsai. Key restaurant formats: hot pot, BBQ/yakiniku, Korean cuisine — all formats with strong queue culture and multi-outlet presence. Target venues span ~100 malls and 90 hypermarkets across 7 major cities.</p>
-  <p class="note">Open question: Can we run a lead scoring exercise for TW similar to SG — using mall/hypermarket tier + Google signals to systematically prioritise outreach?</p>
+  <h3>ICP 2 — Destination restaurant with queue reputation <span style="font-weight:400; color:#888; font-size:13px;">· Phase 2 · Future</span></h3>
+  <p>Not targeted in Phase 1 — requires virtual queue features to deliver core value.</p>
+  <table>
+    <tr><th>Dimension</th><th>Detail</th></tr>
+    <tr><td>Firmographic</td><td>Single or few outlets, walk-in only, known brand — food media, social, word of mouth</td></tr>
+    <tr><td>Technographic</td><td>Manual queue management — no reservation system by design</td></tr>
+    <tr><td>Behavioral signals</td><td>Reviews explicitly mention the queue, featured on food blogs or social</td></tr>
+    <tr><td>Situational trigger</td><td>Growing popularity straining FOH, customers deterred by uncertainty of wait</td></tr>
+    <tr><td>Strategic goal</td><td>Increase demand from customers who won't risk a long wait — give them visibility before they leave home</td></tr>
+    <tr><td>Decision-maker</td><td>Owner or ops manager</td></tr>
+    <tr><td>Sales motion</td><td>Existing Oddle merchants: activate (no new contract). Net new: full outbound sell.</td></tr>
+    <tr><td>Phase note</td><td>Phase 1 (QR) captures walk-aways once on-site. Full value requires post-launch virtual queue features — e.g. auto-join based on current wait time (customer joins remotely 30 mins before arrival if queue is 30 mins).</td></tr>
+  </table>
 
   <!-- TIMELINE -->
   <h2 id="timeline">Timeline</h2>
