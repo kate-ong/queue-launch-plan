@@ -191,6 +191,45 @@
   </table>
   <p class="note">Overage rate is the same as Reserve — Queue notification cost (WhatsApp/LINE) is absorbed by Oddle within the overage margin. Bird calling is usage-based and charged separately regardless of cap status.</p>
 
+  <!-- TW COMPETITIVE SIMULATION -->
+  <h2>Taiwan — Oddle vs Inline Pricing Simulation</h2>
+  <p>Modelling a proposed split cap of <strong>300 queue entries/month</strong> (offline or online, shared pool) for Taiwan, with NT$3/entry overage. Compared against Inline Taiwan tiers.</p>
+  <p class="note">LINE cost (NT$1/entry) is absorbed by Oddle and not visible to the merchant.</p>
+
+  <table>
+    <tr>
+      <th>Queue entries/mo</th>
+      <th><span class="tag tag-tw">Oddle All Access</span></th>
+      <th>Inline Basic</th>
+      <th>Inline Mid-Tier</th>
+      <th>Inline High-Tier</th>
+    </tr>
+    <tr><td>100</td><td>NT$2,088</td><td>NT$2,000 (no queue)</td><td>NT$3,750</td><td>NT$6,500</td></tr>
+    <tr><td>200</td><td>NT$2,088</td><td>NT$2,000 (no queue)</td><td>NT$3,750</td><td>NT$6,500</td></tr>
+    <tr><td>300</td><td>NT$2,088</td><td>NT$2,000 (no queue)</td><td>NT$3,750</td><td>NT$6,500</td></tr>
+    <tr><td>400</td><td>NT$2,388</td><td>—</td><td>NT$3,750</td><td>NT$6,500</td></tr>
+    <tr><td>500</td><td>NT$2,688</td><td>—</td><td>NT$3,750</td><td>NT$6,500</td></tr>
+    <tr><td>625 <span class="note" style="font-style:normal">(Inline Mid cap)</span></td><td>NT$3,063</td><td>—</td><td>NT$3,750</td><td>NT$6,500</td></tr>
+    <tr><td>700</td><td>NT$3,288</td><td>—</td><td style="color:#c0392b">Over cap</td><td>NT$6,500</td></tr>
+    <tr><td>854</td><td>NT$3,750</td><td>—</td><td style="color:#c0392b">Over cap</td><td>NT$6,500</td></tr>
+    <tr><td>1,000</td><td>NT$4,188</td><td>—</td><td style="color:#c0392b">Over cap</td><td>NT$6,500</td></tr>
+    <tr><td>1,150 <span class="note" style="font-style:normal">(Inline High cap)</span></td><td>NT$4,638</td><td>—</td><td style="color:#c0392b">Over cap</td><td>NT$6,500</td></tr>
+    <tr style="background:#fff8f0">
+      <td><strong>1,771</strong> — breakeven</td>
+      <td><strong>NT$6,500</strong></td>
+      <td>—</td>
+      <td style="color:#c0392b">Over cap</td>
+      <td><strong>NT$6,500</strong></td>
+    </tr>
+    <tr><td>2,000</td><td style="color:#c0392b">NT$7,188</td><td>—</td><td style="color:#c0392b">Over cap</td><td>NT$6,500</td></tr>
+  </table>
+
+  <div class="callout">
+    <strong>vs Inline Mid-Tier:</strong> Oddle is always cheaper — Inline Mid-Tier forces an upgrade at ~625 entries before Oddle's price ever catches up (breakeven would be 854, which exceeds the Inline Mid-Tier cap).<br><br>
+    <strong>vs Inline High-Tier:</strong> Oddle is cheaper up to <strong>~1,771 entries/month</strong>. Above that, Inline High-Tier (fixed NT$6,500) becomes cheaper.<br><br>
+    <strong>Note:</strong> Oddle All Access also includes ordering, reservations, and loyalty. Inline Mid/High-Tier covers queue + reservations only.
+  </div>
+
   <!-- DECISIONS -->
   <h2>Decisions Required Before Launch</h2>
   <table>
