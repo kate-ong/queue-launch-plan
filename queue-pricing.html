@@ -90,6 +90,13 @@
     }
     a { color: #1a6fa8; text-decoration: none; }
     a:hover { text-decoration: underline; }
+    .tab-bar { display: flex; margin-bottom: 20px; border-bottom: 2px solid #eee; }
+    .tab-btn {
+      background: none; border: none; cursor: pointer;
+      padding: 8px 16px; font-size: 13px; font-weight: 500;
+      color: #888; border-bottom: 2px solid transparent; margin-bottom: -2px;
+    }
+    .tab-btn.active { color: #1a1a1a; font-weight: 600; border-bottom-color: #1a1a1a; }
     .discussion-section {
       background: #f5f0ff;
       border: 1px solid #c9b8f0;
@@ -193,42 +200,92 @@
 
   <!-- TW COMPETITIVE SIMULATION -->
   <h2>Taiwan — Oddle vs Inline Pricing Simulation</h2>
-  <p>Modelling a proposed split cap of <strong>300 queue entries/month</strong> (offline or online, shared pool) for Taiwan, with NT$3/entry overage. Compared against Inline Taiwan tiers.</p>
+  <p>Proposed cap: <strong>300 queue entries/month</strong> (offline or online, shared pool). Compared against Inline Taiwan tiers at two overage rates.</p>
   <p class="note">LINE cost (NT$1/entry) is absorbed by Oddle and not visible to the merchant.</p>
 
-  <table>
-    <tr>
-      <th>Queue entries/mo</th>
-      <th><span class="tag tag-tw">Oddle All Access</span></th>
-      <th>Inline Basic</th>
-      <th>Inline Mid-Tier</th>
-      <th>Inline High-Tier</th>
-    </tr>
-    <tr><td>100</td><td>NT$2,088</td><td>NT$2,000 (no queue)</td><td>NT$3,750</td><td>NT$6,500</td></tr>
-    <tr><td>200</td><td>NT$2,088</td><td>NT$2,000 (no queue)</td><td>NT$3,750</td><td>NT$6,500</td></tr>
-    <tr><td>300</td><td>NT$2,088</td><td>NT$2,000 (no queue)</td><td>NT$3,750</td><td>NT$6,500</td></tr>
-    <tr><td>400</td><td>NT$2,388</td><td>—</td><td>NT$3,750</td><td>NT$6,500</td></tr>
-    <tr><td>500</td><td>NT$2,688</td><td>—</td><td>NT$3,750</td><td>NT$6,500</td></tr>
-    <tr><td>625 <span class="note" style="font-style:normal">(Inline Mid cap)</span></td><td>NT$3,063</td><td>—</td><td>NT$3,750</td><td>NT$6,500</td></tr>
-    <tr><td>700</td><td>NT$3,288</td><td>—</td><td style="color:#c0392b">Over cap</td><td>NT$6,500</td></tr>
-    <tr><td>854</td><td>NT$3,750</td><td>—</td><td style="color:#c0392b">Over cap</td><td>NT$6,500</td></tr>
-    <tr><td>1,000</td><td>NT$4,188</td><td>—</td><td style="color:#c0392b">Over cap</td><td>NT$6,500</td></tr>
-    <tr><td>1,150 <span class="note" style="font-style:normal">(Inline High cap)</span></td><td>NT$4,638</td><td>—</td><td style="color:#c0392b">Over cap</td><td>NT$6,500</td></tr>
-    <tr style="background:#fff8f0">
-      <td><strong>1,771</strong> — breakeven</td>
-      <td><strong>NT$6,500</strong></td>
-      <td>—</td>
-      <td style="color:#c0392b">Over cap</td>
-      <td><strong>NT$6,500</strong></td>
-    </tr>
-    <tr><td>2,000</td><td style="color:#c0392b">NT$7,188</td><td>—</td><td style="color:#c0392b">Over cap</td><td>NT$6,500</td></tr>
-  </table>
-
-  <div class="callout">
-    <strong>vs Inline Mid-Tier:</strong> Oddle is always cheaper — Inline Mid-Tier forces an upgrade at ~625 entries before Oddle's price ever catches up (breakeven would be 854, which exceeds the Inline Mid-Tier cap).<br><br>
-    <strong>vs Inline High-Tier:</strong> Oddle is cheaper up to <strong>~1,771 entries/month</strong>. Above that, Inline High-Tier (fixed NT$6,500) becomes cheaper.<br><br>
-    <strong>Note:</strong> Oddle All Access also includes ordering, reservations, and loyalty. Inline Mid/High-Tier covers queue + reservations only.
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab(this, 'nt3')">NT$3/entry overage</button>
+    <button class="tab-btn" onclick="switchTab(this, 'nt4')">NT$4/entry overage</button>
   </div>
+
+  <!-- TAB: NT$3 overage -->
+  <div id="tab-nt3">
+    <table>
+      <tr>
+        <th>Queue entries/mo</th>
+        <th><span class="tag tag-tw">Oddle All Access</span></th>
+        <th>Inline Basic</th>
+        <th>Inline Mid-Tier</th>
+        <th>Inline High-Tier</th>
+      </tr>
+      <tr><td>100</td><td>NT$2,088</td><td>NT$2,000 (no queue)</td><td>NT$3,750</td><td>NT$6,500</td></tr>
+      <tr><td>200</td><td>NT$2,088</td><td>NT$2,000 (no queue)</td><td>NT$3,750</td><td>NT$6,500</td></tr>
+      <tr><td>300</td><td>NT$2,088</td><td>NT$2,000 (no queue)</td><td>NT$3,750</td><td>NT$6,500</td></tr>
+      <tr><td>400</td><td>NT$2,388</td><td>—</td><td>NT$3,750</td><td>NT$6,500</td></tr>
+      <tr><td>500</td><td>NT$2,688</td><td>—</td><td>NT$3,750</td><td>NT$6,500</td></tr>
+      <tr><td>625 <span class="note" style="font-style:normal">(Inline Mid cap)</span></td><td>NT$3,063</td><td>—</td><td>NT$3,750</td><td>NT$6,500</td></tr>
+      <tr><td>700</td><td>NT$3,288</td><td>—</td><td style="color:#c0392b">Over cap</td><td>NT$6,500</td></tr>
+      <tr><td>854</td><td>NT$3,750</td><td>—</td><td style="color:#c0392b">Over cap</td><td>NT$6,500</td></tr>
+      <tr><td>1,000</td><td>NT$4,188</td><td>—</td><td style="color:#c0392b">Over cap</td><td>NT$6,500</td></tr>
+      <tr><td>1,150 <span class="note" style="font-style:normal">(Inline High cap)</span></td><td>NT$4,638</td><td>—</td><td style="color:#c0392b">Over cap</td><td>NT$6,500</td></tr>
+      <tr style="background:#fff8f0">
+        <td><strong>1,771</strong> — breakeven</td>
+        <td><strong>NT$6,500</strong></td>
+        <td>—</td>
+        <td style="color:#c0392b">Over cap</td>
+        <td><strong>NT$6,500</strong></td>
+      </tr>
+      <tr><td>2,000</td><td style="color:#c0392b">NT$7,188</td><td>—</td><td style="color:#c0392b">Over cap</td><td>NT$6,500</td></tr>
+    </table>
+    <div class="callout">
+      <strong>vs Inline Mid-Tier:</strong> Oddle always cheaper — Mid-Tier caps at ~625 before Oddle catches up (breakeven is 854 entries).<br><br>
+      <strong>vs Inline High-Tier:</strong> Oddle cheaper up to <strong>~1,771 entries/month</strong>. Oddle margin per overage entry: NT$2 (after NT$1 LINE cost).
+    </div>
+  </div>
+
+  <!-- TAB: NT$4 overage -->
+  <div id="tab-nt4" style="display:none">
+    <table>
+      <tr>
+        <th>Queue entries/mo</th>
+        <th><span class="tag tag-tw">Oddle All Access</span></th>
+        <th>Inline Basic</th>
+        <th>Inline Mid-Tier</th>
+        <th>Inline High-Tier</th>
+      </tr>
+      <tr><td>100</td><td>NT$2,088</td><td>NT$2,000 (no queue)</td><td>NT$3,750</td><td>NT$6,500</td></tr>
+      <tr><td>200</td><td>NT$2,088</td><td>NT$2,000 (no queue)</td><td>NT$3,750</td><td>NT$6,500</td></tr>
+      <tr><td>300</td><td>NT$2,088</td><td>NT$2,000 (no queue)</td><td>NT$3,750</td><td>NT$6,500</td></tr>
+      <tr><td>400</td><td>NT$2,488</td><td>—</td><td>NT$3,750</td><td>NT$6,500</td></tr>
+      <tr><td>500</td><td>NT$2,888</td><td>—</td><td>NT$3,750</td><td>NT$6,500</td></tr>
+      <tr><td>625 <span class="note" style="font-style:normal">(Inline Mid cap)</span></td><td>NT$3,388</td><td>—</td><td>NT$3,750</td><td>NT$6,500</td></tr>
+      <tr><td>700</td><td>NT$3,688</td><td>—</td><td style="color:#c0392b">Over cap</td><td>NT$6,500</td></tr>
+      <tr><td>854</td><td>NT$4,304</td><td>—</td><td style="color:#c0392b">Over cap</td><td>NT$6,500</td></tr>
+      <tr><td>1,000</td><td>NT$4,888</td><td>—</td><td style="color:#c0392b">Over cap</td><td>NT$6,500</td></tr>
+      <tr><td>1,150 <span class="note" style="font-style:normal">(Inline High cap)</span></td><td>NT$5,488</td><td>—</td><td style="color:#c0392b">Over cap</td><td>NT$6,500</td></tr>
+      <tr style="background:#fff8f0">
+        <td><strong>1,403</strong> — breakeven</td>
+        <td><strong>NT$6,500</strong></td>
+        <td>—</td>
+        <td style="color:#c0392b">Over cap</td>
+        <td><strong>NT$6,500</strong></td>
+      </tr>
+      <tr><td>1,500</td><td style="color:#c0392b">NT$6,888</td><td>—</td><td style="color:#c0392b">Over cap</td><td>NT$6,500</td></tr>
+    </table>
+    <div class="callout">
+      <strong>vs Inline Mid-Tier:</strong> Oddle always cheaper — Mid-Tier caps at ~625 before Oddle catches up (breakeven is ~716 entries).<br><br>
+      <strong>vs Inline High-Tier:</strong> Oddle cheaper up to <strong>~1,403 entries/month</strong>. Oddle margin per overage entry: NT$3 (after NT$1 LINE cost).
+    </div>
+  </div>
+
+  <script>
+    function switchTab(btn, id) {
+      document.querySelectorAll('[id^="tab-nt"]').forEach(el => el.style.display = 'none');
+      document.getElementById('tab-' + id).style.display = '';
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+  </script>
 
   <!-- DECISIONS -->
   <h2>Decisions Required Before Launch</h2>
