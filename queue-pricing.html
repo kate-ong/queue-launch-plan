@@ -235,28 +235,28 @@
     </tr>
     <tr>
       <td><strong>High reserve / Low queue</strong></td>
-      <td>600</td><td>100</td><td>700</td>
-      <td>NT$2,088<br><span class="note" style="font-style:normal">base only — separate pools, neither exceeds cap</span></td>
-      <td>NT$4,200<br><span class="note" style="font-style:normal">75 over cap × NT$6</span></td>
+      <td>800</td><td>100</td><td>900</td>
+      <td>NT$2,388<br><span class="note" style="font-style:normal">+ NT$300 reserve overage (100 × NT$3)</span></td>
+      <td>NT$5,400<br><span class="note" style="font-style:normal">275 over cap × NT$6</span></td>
       <td>NT$6,500</td>
-      <td class="check">NT$2,112 vs Mid</td>
+      <td class="check">NT$3,012 vs Mid</td>
     </tr>
     <tr>
       <td><strong>High / High</strong></td>
-      <td>600</td><td>3,000</td><td>3,600</td>
-      <td>NT$15,588<br><span class="note" style="font-style:normal">+ NT$13,500 queue overage (2,700 × NT$5)</span></td>
-      <td>NT$21,600<br><span class="note" style="font-style:normal">2,975 over cap × NT$6</span></td>
-      <td>NT$18,750<br><span class="note" style="font-style:normal">2,450 over cap × NT$5</span></td>
-      <td class="check">NT$3,162 vs High</td>
+      <td>800</td><td>3,000</td><td>3,800</td>
+      <td>NT$15,888<br><span class="note" style="font-style:normal">+ NT$300 reserve overage + NT$13,500 queue overage</span></td>
+      <td>NT$22,800<br><span class="note" style="font-style:normal">3,175 over cap × NT$6</span></td>
+      <td>NT$19,750<br><span class="note" style="font-style:normal">2,650 over cap × NT$5</span></td>
+      <td class="check">NT$3,862 vs High</td>
     </tr>
   </table>
 
-  <p class="note">Low queue ≈ moderate restaurant (~25 queue entries/week). High queue ≈ very popular restaurant (~700 queue entries/week, e.g. large hotpot chain).</p>
+  <p class="note">Low ≈ moderate restaurant (~25 queue/week, ~50 reserve/week). High ≈ very popular restaurant (~700 queue/week, ~200 reserve/week, e.g. large hotpot chain).</p>
 
   <div class="callout">
     <strong>The separate pool advantage:</strong> On Inline, reservations and queue compete for the same monthly limit — high reserve usage eats into queue headroom and triggers overage sooner. On Oddle, each product has its own cap.<br><br>
-    This is most visible in the <em>High reserve / Low queue</em> scenario: same 700 total entries, but Oddle pays NT$2,088 (both pools within cap) while Inline Mid-Tier charges NT$4,200 (75 entries over the combined limit).<br><br>
-    At high combined usage (600 reserve + 3,000 queue), Oddle saves <strong>NT$3,162/month (NT$37,944/year)</strong> vs Inline High-Tier.
+    This is most visible in the <em>High reserve / Low queue</em> scenario: Oddle pays NT$2,388 (small reserve overage only) while Inline Mid-Tier charges NT$5,400 — a saving of NT$3,012/month despite Oddle's reserve pool also being exceeded.<br><br>
+    At high combined usage (800 reserve + 3,000 queue), Oddle saves <strong>NT$3,862/month (NT$46,344/year)</strong> vs Inline High-Tier.
   </div>
 
   <!-- DECISIONS -->
