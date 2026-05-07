@@ -177,103 +177,85 @@
     <tr><td>750 (cap)</td><td>SGD$45.00</td><td>20.9%</td></tr>
   </table>
 
-  <h3><span class="tag tag-tw">Taiwan</span> LINE Cost Estimate</h3>
-  <p>Rate: NT$0.4/message (LON — assuming all LON) · Average messages per queue entry: 2.5 · Cost per entry: <strong>NT$1.00</strong></p>
+  <h3><span class="tag tag-tw">Taiwan</span> LINE + SMS Cost Estimate</h3>
+  <p>LINE official notification: NT$0.4/entry · SMS fallback: NT$0.8/entry · Combined cost per entry: <strong>NT$1.20</strong></p>
   <table>
-    <tr><th>Entries/month</th><th>LINE cost/month</th><th>As % of NT$2,088 plan</th></tr>
-    <tr><td>100</td><td>NT$100</td><td>4.8%</td></tr>
-    <tr><td>300</td><td>NT$300</td><td>14.4%</td></tr>
-    <tr><td>500</td><td>NT$500</td><td>23.9%</td></tr>
-    <tr><td>700 (cap)</td><td>NT$700</td><td>33.5%</td></tr>
+    <tr><th>Queue entries/month</th><th>LINE+SMS cost/month</th><th>As % of NT$2,088 plan</th></tr>
+    <tr><td>100</td><td>NT$120</td><td>5.7%</td></tr>
+    <tr><td>200</td><td>NT$240</td><td>11.5%</td></tr>
+    <tr><td>300 (queue cap)</td><td>NT$360</td><td>17.2%</td></tr>
+    <tr><td>500</td><td>NT$600</td><td>28.7%</td></tr>
   </table>
   <!-- OVERAGE -->
   <h2>Overage Model</h2>
-  <p>Queue and Reserve share the same entry pool. Overage applies when combined Queue + Reserve entries exceed the monthly cap. Queue uses the same per-entry overage rate as Reserve.</p>
+  <p>Taiwan Queue and Reserve have <strong>separate entry pools</strong> with different overage rates — Queue carries a higher notification cost (LINE + SMS) and is priced accordingly. Singapore Queue and Reserve share one pool.</p>
   <table>
-    <tr><th></th><th><span class="tag tag-sg">Singapore</span></th><th><span class="tag tag-tw">Taiwan</span></th></tr>
-    <tr><td>Monthly cap (Queue + Reserve shared)</td><td>750 entries</td><td>700 entries</td></tr>
-    <tr><td>Overage rate</td><td>SGD$0.30/entry</td><td>NT$3/entry</td></tr>
-    <tr><td>Notification cost at overage</td><td>SGD$0.06 (WhatsApp)</td><td>NT$1.00 (LINE)</td></tr>
-    <tr><td>Oddle margin per overage entry</td><td>SGD$0.24</td><td>NT$2.00</td></tr>
+    <tr><th></th><th><span class="tag tag-sg">SG — Queue + Reserve (shared)</span></th><th><span class="tag tag-tw">TW — Reserve</span></th><th><span class="tag tag-tw">TW — Queue</span></th></tr>
+    <tr><td>Monthly cap</td><td>750 entries</td><td>700 entries</td><td>300 entries</td></tr>
+    <tr><td>Overage rate</td><td>SGD$0.30/entry</td><td>NT$3/entry</td><td>NT$5/entry</td></tr>
+    <tr><td>Notification cost at overage</td><td>SGD$0.06 (WhatsApp)</td><td>—</td><td>NT$1.20 (LINE + SMS)</td></tr>
+    <tr><td>Oddle margin per overage entry</td><td>SGD$0.24</td><td>NT$3.00</td><td>NT$3.80</td></tr>
   </table>
-  <p class="note">Overage rate is the same as Reserve — Queue notification cost (WhatsApp/LINE) is absorbed by Oddle within the overage margin. Bird calling is usage-based and charged separately regardless of cap status.</p>
+  <p class="note">Bird calling is usage-based and charged separately regardless of cap status.</p>
 
   <!-- TW COMPETITIVE SIMULATION -->
-  <h2>Taiwan — Oddle vs Inline Pricing Simulation</h2>
-  <p>Proposed cap: <strong>300 queue entries/month</strong> (offline or online, shared pool). Compared against Inline Taiwan tiers at two overage rates.</p>
-  <p class="note">LINE cost (NT$1/entry) is absorbed by Oddle and not visible to the merchant.</p>
+  <h2>Taiwan — Oddle vs Inline: Reserve + Queue Combined</h2>
+  <p>Inline's pricing covers both queue and reservations in one pool. This comparison shows what a merchant using both products would pay on each side.</p>
+  <p class="note">
+    <strong>Oddle:</strong> Reserve cap 700/mo (NT$3 overage) · Queue cap 300/mo (NT$5 overage) — separate pools, both included in NT$2,088/mo.<br>
+    <strong>Inline:</strong> Single combined pool — Mid-Tier NT$3,750/mo (~625 cap, NT$6 overage) · High-Tier NT$6,500/mo (~1,150 cap, NT$5 overage).
+  </p>
 
-  <div class="tab-bar">
-    <button class="tab-btn active" onclick="switchTab(this, 'nt3')">NT$3/entry overage</button>
-    <button class="tab-btn" onclick="switchTab(this, 'nt4')">NT$4/entry overage</button>
+  <table>
+    <tr>
+      <th>Scenario</th>
+      <th>Reserve</th>
+      <th>Queue</th>
+      <th>Total</th>
+      <th><span class="tag tag-tw">Oddle All Access</span></th>
+      <th>Inline Mid-Tier</th>
+      <th>Inline High-Tier</th>
+      <th>Oddle saves</th>
+    </tr>
+    <tr>
+      <td><strong>Low / Low</strong></td>
+      <td>200</td><td>100</td><td>300</td>
+      <td>NT$2,088<br><span class="note" style="font-style:normal">base only</span></td>
+      <td>NT$3,750</td>
+      <td>NT$6,500</td>
+      <td class="check">NT$1,662 vs Mid</td>
+    </tr>
+    <tr>
+      <td><strong>Low reserve / High queue</strong></td>
+      <td>200</td><td>500</td><td>700</td>
+      <td>NT$3,088<br><span class="note" style="font-style:normal">+ NT$1,000 queue overage</span></td>
+      <td>NT$4,200<br><span class="note" style="font-style:normal">75 over cap × NT$6</span></td>
+      <td>NT$6,500</td>
+      <td class="check">NT$1,112 vs Mid</td>
+    </tr>
+    <tr>
+      <td><strong>High reserve / Low queue</strong></td>
+      <td>600</td><td>100</td><td>700</td>
+      <td>NT$2,088<br><span class="note" style="font-style:normal">base only — separate pools, neither exceeds cap</span></td>
+      <td>NT$4,200<br><span class="note" style="font-style:normal">75 over cap × NT$6</span></td>
+      <td>NT$6,500</td>
+      <td class="check">NT$2,112 vs Mid</td>
+    </tr>
+    <tr>
+      <td><strong>High / High</strong></td>
+      <td>600</td><td>500</td><td>1,100</td>
+      <td>NT$3,088<br><span class="note" style="font-style:normal">+ NT$1,000 queue overage</span></td>
+      <td>NT$6,600<br><span class="note" style="font-style:normal">475 over cap × NT$6 — more than High-Tier</span></td>
+      <td>NT$6,500</td>
+      <td class="check">NT$3,412 vs High</td>
+    </tr>
+  </table>
+
+  <div class="callout">
+    <strong>The separate pool advantage:</strong> On Inline, reservations and queue compete for the same monthly limit — high reserve usage eats into queue headroom and triggers overage sooner. On Oddle, each product has its own cap.<br><br>
+    This is most visible in the <em>High reserve / Low queue</em> scenario: same 700 total entries, but Oddle pays NT$2,088 (both pools within cap) while Inline Mid-Tier charges NT$4,200 (75 entries over the combined limit).<br><br>
+    At high combined usage, Oddle saves <strong>NT$3,412/month (NT$40,944/year)</strong> vs Inline High-Tier.
   </div>
-
-  <!-- TAB: NT$3 overage -->
-  <div id="tab-nt3">
-    <table>
-      <tr>
-        <th>Queue entries/mo</th>
-        <th><span class="tag tag-tw">Oddle All Access</span></th>
-        <th>Inline Basic</th>
-        <th>Inline Mid-Tier <span style="font-weight:400;text-transform:none;letter-spacing:0">(NT$6/entry overage)</span></th>
-        <th>Inline High-Tier <span style="font-weight:400;text-transform:none;letter-spacing:0">(NT$5/entry overage)</span></th>
-      </tr>
-      <tr><td>100</td><td>NT$2,088</td><td>NT$2,000 (no queue)</td><td>NT$3,750</td><td>NT$6,500</td></tr>
-      <tr><td>200</td><td>NT$2,088</td><td>NT$2,000 (no queue)</td><td>NT$3,750</td><td>NT$6,500</td></tr>
-      <tr><td>300</td><td>NT$2,088</td><td>NT$2,000 (no queue)</td><td>NT$3,750</td><td>NT$6,500</td></tr>
-      <tr><td>400</td><td>NT$2,388</td><td>—</td><td>NT$3,750</td><td>NT$6,500</td></tr>
-      <tr><td>500</td><td>NT$2,688</td><td>—</td><td>NT$3,750</td><td>NT$6,500</td></tr>
-      <tr><td>625 <span class="note" style="font-style:normal">(Inline Mid cap)</span></td><td>NT$3,063</td><td>—</td><td>NT$3,750</td><td>NT$6,500</td></tr>
-      <tr><td>700</td><td>NT$3,288</td><td>—</td><td>NT$4,200</td><td>NT$6,500</td></tr>
-      <tr><td>854</td><td>NT$3,750</td><td>—</td><td>NT$5,124</td><td>NT$6,500</td></tr>
-      <tr><td>1,000</td><td>NT$4,188</td><td>—</td><td>NT$6,000</td><td>NT$6,500</td></tr>
-      <tr><td>1,150 <span class="note" style="font-style:normal">(Inline High cap)</span></td><td>NT$4,638</td><td>—</td><td>NT$6,900</td><td>NT$6,500</td></tr>
-      <tr><td>1,500</td><td>NT$5,688</td><td>—</td><td>NT$9,000</td><td>NT$8,250</td></tr>
-      <tr><td>2,000</td><td>NT$7,188</td><td>—</td><td>NT$12,000</td><td>NT$10,750</td></tr>
-    </table>
-    <div class="callout">
-      <strong>No breakeven point at realistic volumes.</strong> Once Inline's overage rates are factored in, Oddle is always cheaper than any Inline tier that includes queue.<br><br>
-      At 2,000 entries: Oddle NT$7,188 vs Inline High NT$10,750 — saving NT$3,562/mo. Oddle margin per overage entry: NT$2 (after NT$1 LINE cost).
-    </div>
-  </div>
-
-  <!-- TAB: NT$4 overage -->
-  <div id="tab-nt4" style="display:none">
-    <table>
-      <tr>
-        <th>Queue entries/mo</th>
-        <th><span class="tag tag-tw">Oddle All Access</span></th>
-        <th>Inline Basic</th>
-        <th>Inline Mid-Tier <span style="font-weight:400;text-transform:none;letter-spacing:0">(NT$6/entry overage)</span></th>
-        <th>Inline High-Tier <span style="font-weight:400;text-transform:none;letter-spacing:0">(NT$5/entry overage)</span></th>
-      </tr>
-      <tr><td>100</td><td>NT$2,088</td><td>NT$2,000 (no queue)</td><td>NT$3,750</td><td>NT$6,500</td></tr>
-      <tr><td>200</td><td>NT$2,088</td><td>NT$2,000 (no queue)</td><td>NT$3,750</td><td>NT$6,500</td></tr>
-      <tr><td>300</td><td>NT$2,088</td><td>NT$2,000 (no queue)</td><td>NT$3,750</td><td>NT$6,500</td></tr>
-      <tr><td>400</td><td>NT$2,488</td><td>—</td><td>NT$3,750</td><td>NT$6,500</td></tr>
-      <tr><td>500</td><td>NT$2,888</td><td>—</td><td>NT$3,750</td><td>NT$6,500</td></tr>
-      <tr><td>625 <span class="note" style="font-style:normal">(Inline Mid cap)</span></td><td>NT$3,388</td><td>—</td><td>NT$3,750</td><td>NT$6,500</td></tr>
-      <tr><td>700</td><td>NT$3,688</td><td>—</td><td>NT$4,200</td><td>NT$6,500</td></tr>
-      <tr><td>854</td><td>NT$4,304</td><td>—</td><td>NT$5,124</td><td>NT$6,500</td></tr>
-      <tr><td>1,000</td><td>NT$4,888</td><td>—</td><td>NT$6,000</td><td>NT$6,500</td></tr>
-      <tr><td>1,150 <span class="note" style="font-style:normal">(Inline High cap)</span></td><td>NT$5,488</td><td>—</td><td>NT$6,900</td><td>NT$6,500</td></tr>
-      <tr><td>1,500</td><td>NT$6,888</td><td>—</td><td>NT$9,000</td><td>NT$8,250</td></tr>
-      <tr><td>2,000</td><td>NT$7,888</td><td>—</td><td>NT$12,000</td><td>NT$10,750</td></tr>
-    </table>
-    <div class="callout">
-      <strong>No breakeven point at realistic volumes.</strong> Even at NT$4 overage, Oddle grows at NT$4/entry vs Inline High-Tier's NT$5/entry — Oddle always cheaper for merchants needing queue.<br><br>
-      At 2,000 entries: Oddle NT$7,888 vs Inline High NT$10,750 — saving NT$2,862/mo. Oddle margin per overage entry: NT$3 (after NT$1 LINE cost).
-    </div>
-  </div>
-
-  <script>
-    function switchTab(btn, id) {
-      document.querySelectorAll('[id^="tab-nt"]').forEach(el => el.style.display = 'none');
-      document.getElementById('tab-' + id).style.display = '';
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-    }
-  </script>
 
   <!-- DECISIONS -->
   <h2>Decisions Required Before Launch</h2>
